@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Dashboard Login</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#2b3a8c,#4f46e5);
+color:white;
+display:flex;
+flex-direction:column;
+}
+
+/* NAVBAR */
+.navbar{
+background:transparent;
+padding:15px 40px;
+font-weight:500;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+margin-top:80px;
+}
+
+.hero h1{
+font-size:48px;
+font-weight:700;
+}
+
+.hero span{
+color:#a78bfa;
+text-shadow:0 0 10px #a78bfa;
+}
+
+.hero p{
+color:#cbd5e1;
+margin-top:10px;
+}
+
+/* CARD */
+.login-card{
+background:#0f172a;
+padding:40px;
+border-radius:16px;
+width:350px;
+margin:40px auto;
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* INPUT */
+.form-control{
+background:#020617;
+border:1px solid #334155;
+color:white;
+height:45px;
+border-radius:8px;
+}
+
+.form-control::placeholder{
+color:#94a3b8;
+}
+
+/* BUTTON */
+.btn-primary{
+background:linear-gradient(90deg,#7c5cff,#6366f1);
+border:none;
+height:45px;
+border-radius:8px;
+font-weight:600;
+}
+
+.btn-primary:hover{
+opacity:0.9;
+}
+
+/* LINK */
+a{
+color:#a78bfa;
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+/* ERROR */
+.error{
+color:#f87171;
+text-align:center;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+AI Analytics
+</div>
+
+
+<!-- HERO -->
+<div class="hero">
+
+<h1>Transform Your <span>Data Insights</span></h1>
+
+<p>Upload datasets, analyze patterns, and build intelligent predictions.</p>
+
+</div>
+
+
+<!-- LOGIN CARD -->
+<div class="login-card">
+
+<h4 class="text-center mb-4">Login to Dashboard</h4>
+
+<form method="post">
+
+{% csrf_token %}
+
+<input 
+type="text"
+name="username"
+class="form-control mb-3"
+placeholder="Username"
+required>
+
+<input 
+type="password"
+name="password"
+class="form-control mb-3"
+placeholder="Password"
+required>
+
+<button class="btn btn-primary w-100">Login</button>
+
+</form>
+
+<p class="text-center mt-3">
+New user? <a href="/register/">Create account</a>
+</p>
+
+{% if error %}
+<div class="error">{{error}}</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

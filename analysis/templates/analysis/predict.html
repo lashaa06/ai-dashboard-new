@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Prediction</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:'Poppins',sans-serif;
+}
+
+.navbar{
+background:#020617;
+box-shadow:0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* CARD */
+
+.predict-card{
+background:#0f172a;
+padding:40px;
+border-radius:12px;
+max-width:500px;
+margin:auto;
+margin-top:80px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* INPUT */
+
+.form-control{
+background:#020617;
+border:1px solid #334155;
+color:white;
+}
+
+.form-control::placeholder{
+color:#94a3b8;
+}
+
+/* BUTTON */
+
+.btn-success{
+background:#7c5cff;
+border:none;
+}
+
+.btn-success:hover{
+background:#6a4ff7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+
+<a class="navbar-brand">AI Dashboard</a>
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="/dashboard/">Dashboard</a>
+</li>
+
+<a href="/logout/" class="btn btn-danger ms-3">Logout</a>
+
+</ul>
+
+</div>
+</nav>
+
+
+<div class="predict-card">
+
+<h3 class="text-center mb-4">AI Prediction</h3>
+
+<form method="post">
+
+{% csrf_token %}
+
+<input class="form-control mb-3" name="f1" placeholder="Feature 1">
+<input class="form-control mb-3" name="f2" placeholder="Feature 2">
+<input class="form-control mb-3" name="f3" placeholder="Feature 3">
+<input class="form-control mb-3" name="f4" placeholder="Feature 4">
+
+<button class="btn btn-success w-100">Predict</button>
+
+</form>
+
+{% if result %}
+<div class="alert alert-info mt-4">
+<b>Prediction Result:</b> {{result}}
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
